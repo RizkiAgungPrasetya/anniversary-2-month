@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bbyyy ❤️ Happy 2 Months Anniversary</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --rose:     #c94b7b;
+  --rose-lt:  #e8789e;
+  --blush:    #fde8ef;
+  --cream:    #fdf6f0;
+  --wine:     #1c0513;
+  --wine-mid: #3a0d24;
+  --gold:     #c8966a;
+  --gold-lt:  #e8c49a;
+  --white:    #ffffff;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--wine);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+
+/* ── CURSOR TRAIL ── */
+#trail-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999}
+
+/* ── FLOATING PETALS ── */
+.petals-wrap{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.petal{position:absolute;top:-40px;opacity:0;animation:petalFall linear infinite}
+@keyframes petalFall{
+  0%{opacity:.9;transform:translateY(0) rotate(0deg) scale(1)}
+  100%{opacity:0;transform:translateY(110vh) rotate(720deg) scale(.5)}
+}
+
+/* ══════════════════════════════════
+   HERO
+══════════════════════════════════ */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(165deg,#0e0208 0%,#2a0819 45%,#0e0208 100%);
+  overflow:hidden;
+}
+/* Bokeh orbs */
+.hero::before,.hero::after{
+  content:'';position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;
+}
+.hero::before{
+  width:60vw;height:60vw;max-width:640px;max-height:640px;
+  background:radial-gradient(circle,rgba(201,75,123,.28),transparent 70%);
+  top:-10%;left:-10%;
+}
+.hero::after{
+  width:50vw;height:50vw;max-width:560px;max-height:560px;
+  background:radial-gradient(circle,rgba(200,150,106,.2),transparent 70%);
+  bottom:-15%;right:-10%;
+}
+.orb-extra{
+  position:absolute;width:40vw;height:40vw;max-width:400px;max-height:400px;
+  border-radius:50%;filter:blur(80px);pointer-events:none;
+  background:radial-gradient(circle,rgba(201,75,123,.15),transparent 70%);
+  bottom:10%;left:20%;
+}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:48px 24px;max-width:800px;margin:auto}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold-lt);margin-bottom:32px;
+  animation:fadeUp .8s ease both;
+}
+.eyebrow span{display:block;width:32px;height:1px;background:var(--gold)}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,9vw,7rem);
+  color:#fff;line-height:1.05;font-weight:300;
+  animation:fadeUp .9s .15s ease both;
+  letter-spacing:-.01em;
+}
+.hero h1 em{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(3.5rem,10vw,8rem);
+  color:var(--rose-lt);display:block;
+  line-height:1.1;font-weight:400;
+}
+.hero-sub{
+  font-size:1rem;color:rgba(255,255,255,.55);
+  margin-top:24px;line-height:1.8;letter-spacing:.02em;
+  animation:fadeUp .9s .3s ease both;
+}
+.hero-date-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:32px;padding:10px 22px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:99px;color:rgba(255,255,255,.7);
+  font-size:.82rem;letter-spacing:.08em;
+  animation:fadeUp .9s .45s ease both;
+  backdrop-filter:blur(10px);
+}
+.hero-date-pill::before{content:'📅';font-size:.9rem}
+.scroll-arrow{
+  display:block;width:40px;height:40px;margin:44px auto 0;
+  border:1px solid rgba(255,255,255,.2);border-radius:50%;
+  line-height:38px;text-align:center;cursor:pointer;
+  color:rgba(255,255,255,.5);font-size:1rem;text-decoration:none;
+  animation:arrowBounce 2s 1.5s infinite, fadeUp .9s .6s ease both;
+  transition:border-color .3s,color .3s;
+}
+.scroll-arrow:hover{border-color:var(--rose-lt);color:var(--rose-lt)}
+
+/* ══════════════════════════════════
+   COUNTER  (with seconds)
+══════════════════════════════════ */
+.counter-section{
+  position:relative;padding:80px 24px 72px;text-align:center;overflow:hidden;
+  background:linear-gradient(170deg, #2a0819 0%, #1a0410 100%);
+}
+.counter-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,75,123,.2),transparent 70%);
+  pointer-events:none;
+}
+.counter-eyebrow{
+  font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:36px;opacity:.85;position:relative;
+}
+.counter-grid{
+  display:inline-flex;gap:clamp(12px,3vw,32px);
+  flex-wrap:wrap;justify-content:center;
+  position:relative;
+}
+.counter-box{
+  display:flex;flex-direction:column;align-items:center;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  padding:clamp(16px,3vw,28px) clamp(20px,3.5vw,40px);
+  min-width:clamp(72px,15vw,110px);
+  backdrop-filter:blur(12px);
+  transition:transform .3s;
+}
+.counter-box:hover{transform:translateY(-4px)}
+.counter-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.6rem,7vw,5.5rem);
+  color:#fff;font-weight:300;line-height:1;
+  text-shadow:0 0 40px rgba(232,120,158,.35);
+}
+.counter-label{
+  font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);margin-top:8px;
+}
+.counter-sep{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,5vw,4rem);color:var(--rose);
+  align-self:center;line-height:1;padding-bottom:20px;opacity:.5;
+}
+.music-btn{
+  margin-top:44px;display:inline-flex;align-items:center;gap:10px;
+  background:transparent;border:1px solid rgba(201,75,123,.4);
+  color:rgba(255,255,255,.75);padding:12px 30px;border-radius:999px;
+  cursor:pointer;font-family:'DM Sans',sans-serif;
+  font-size:.85rem;letter-spacing:.08em;
+  transition:background .3s,border-color .3s,transform .2s;
+  position:relative;
+}
+.music-btn:hover{background:rgba(201,75,123,.15);border-color:var(--rose-lt);transform:scale(1.04)}
+.music-btn svg{width:16px;height:16px;fill:currentColor}
+
+/* ══════════════════════════════════
+   GALLERY
+══════════════════════════════════ */
+.gallery-section{padding:100px 24px;max-width:1280px;margin:auto}
+.s-label{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--rose);margin-bottom:10px;display:block}
+.s-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,4.5vw,3.4rem);
+  color:var(--wine);font-weight:300;margin-bottom:44px;line-height:1.15;
+}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;grid-auto-rows:200px}
+.g-item{
+  position:relative;overflow:hidden;border-radius:14px;
+  cursor:pointer;background:#e8d5da;
+}
+/* Layout spans for 16 photos */
+.g-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.g-item:nth-child(4){grid-column:span 2;grid-row:span 2}
+.g-item:nth-child(9){grid-column:span 2;grid-row:span 2}
+.g-item:nth-child(13){grid-column:span 2;grid-row:span 2}
+.g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.25,.46,.45,.94)}
+.g-item:hover img{transform:scale(1.08)}
+/* subtle pink shimmer on hover */
+.g-item::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(201,75,123,.12);
+  opacity:0;transition:opacity .35s;
+  border-radius:14px;
+}
+/* hide overlay text */
+.g-overlay{display:none}
+.g-item:hover::after{opacity:1}
+
+/* ── VIDEO ITEMS ── */
+.v-item{
+  position:relative;overflow:hidden;border-radius:14px;
+  cursor:pointer;background:#1a0410;
+}
+.v-item video{width:100%;height:100%;object-fit:cover;display:block}
+.v-item::after{
+  content:'▶';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.0);color:rgba(255,255,255,0);font-size:2rem;
+  transition:background .3s,color .3s;pointer-events:none;
+}
+.v-item:hover::after{background:rgba(0,0,0,.25);color:rgba(255,255,255,.7)}
+/* Video section separate row */
+.video-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;justify-items:center}
+.video-row .v-item{aspect-ratio:9/16;width:100%}
+@media(max-width:640px){.video-row{grid-template-columns:1fr;max-width:280px;margin-left:auto;margin-right:auto}}
+
+/* Video lightbox */
+.vlightbox{
+  position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:9999;
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.vlightbox.active{display:flex}
+.vlightbox video{max-width:90vw;max-height:88vh;border-radius:12px;box-shadow:0 0 80px rgba(201,75,123,.25)}
+.vlb-close{position:fixed;top:20px;right:24px;font-size:1.6rem;color:rgba(255,255,255,.6);cursor:pointer;z-index:10000;line-height:1;transition:color .2s;background:none;border:none}
+.vlb-close:hover{color:var(--rose-lt)}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:9999;
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.lightbox.active{display:flex}
+.lightbox img{max-width:88vw;max-height:85vh;border-radius:12px;object-fit:contain;box-shadow:0 0 80px rgba(201,75,123,.3)}
+.lb-close{position:fixed;top:20px;right:24px;font-size:1.6rem;color:rgba(255,255,255,.6);cursor:pointer;z-index:10000;line-height:1;transition:color .2s}
+.lb-close:hover{color:var(--rose-lt)}
+.lb-cap{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-size:.85rem;text-align:center}
+
+/* ══════════════════════════════════
+   TIMELINE
+══════════════════════════════════ */
+.timeline-section{
+  background:linear-gradient(160deg,#0e0208 0%,#2a0819 60%,#0e0208 100%);
+  padding:100px 24px;
+}
+.timeline-inner{max-width:700px;margin:auto}
+.timeline-section .s-label{color:var(--gold-lt)}
+.timeline-section .s-title{color:#fff}
+.tl-list{margin-top:44px;position:relative;padding-left:36px}
+.tl-list::before{
+  content:'';position:absolute;left:10px;top:8px;bottom:8px;
+  width:1px;background:linear-gradient(to bottom,transparent,rgba(201,75,123,.4) 15%,rgba(201,75,123,.4) 85%,transparent);
+}
+.tl-item{
+  position:relative;margin-bottom:44px;
+  opacity:0;transform:translateY(18px);transition:opacity .65s,transform .65s;
+}
+.tl-item.visible{opacity:1;transform:none}
+.tl-dot{
+  position:absolute;left:-36px;top:6px;width:20px;height:20px;
+  border-radius:50%;background:var(--wine-mid);
+  border:2px solid var(--rose);
+  box-shadow:0 0 12px rgba(201,75,123,.5),0 0 28px rgba(201,75,123,.2);
+}
+.tl-dot-inner{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:8px;height:8px;border-radius:50%;background:var(--rose-lt);
+}
+.tl-tag{
+  display:inline-block;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:6px;
+}
+.tl-text{
+  color:rgba(255,255,255,.72);font-size:.98rem;line-height:1.75;
+  border-left:1px solid rgba(201,75,123,.2);padding-left:16px;margin-top:4px;
+}
+
+/* ══════════════════════════════════
+   LETTER
+══════════════════════════════════ */
+.letter-section{padding:100px 24px;max-width:760px;margin:auto;text-align:center}
+.letter-wrap{
+  position:relative;margin-top:44px;
+  background:#fff;border-radius:28px;
+  padding:60px 52px;
+  box-shadow:0 24px 80px rgba(201,75,123,.1),0 4px 24px rgba(201,75,123,.06);
+}
+.letter-wrap::before{
+  content:'\201C';
+  font-family:'Cormorant Garamond',serif;
+  font-size:11rem;color:var(--blush);
+  position:absolute;top:-32px;left:28px;line-height:1;z-index:0;
+  pointer-events:none;
+}
+.letter-wrap::after{
+  content:'';position:absolute;
+  left:0;right:0;bottom:0;height:4px;border-radius:0 0 28px 28px;
+  background:linear-gradient(90deg,var(--rose),var(--gold),var(--rose));
+}
+.letter-body{
+  position:relative;z-index:1;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;color:#555;line-height:1.95;font-style:italic;text-align:left;
+}
+.letter-sign{
+  position:relative;z-index:1;
+  margin-top:36px;
+  font-family:'Great Vibes',cursive;
+  font-size:2rem;color:var(--rose);
+  text-align:right;
+}
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+footer{
+  background:#0e0208;text-align:center;
+  padding:48px 24px;
+  font-size:.78rem;color:rgba(255,255,255,.25);letter-spacing:.06em;
+  line-height:1.8;
+}
+footer .footer-heart{
+  display:block;font-family:'Great Vibes',cursive;
+  font-size:2.6rem;color:var(--rose);margin-bottom:16px;opacity:.7;
+}
+
+/* ══════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes arrowBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media(max-width:640px){
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .g-item:nth-child(1),.g-item:nth-child(5){grid-column:span 2}
+  .letter-wrap{padding:44px 28px}
+  .letter-wrap::before{font-size:8rem;top:-24px}
+  .counter-sep{display:none}
+  .counter-grid{gap:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="petals-wrap" id="petals"></div>
+<canvas id="trail-canvas"></canvas>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="orb-extra"></div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span></span>Spesial untuk Bbyyy Tersayang<span></span></div>
+    <h1>
+      Happy
+      <em>2 Months</em>
+      Anniversary
+    </h1>
+    <p class="hero-sub">Dua bulan penuh cerita, tawa, dan cinta<br>yang terasa seperti selamanya 💕</p>
+    <div class="hero-date-pill">26 April 2026 — Awal dari Segalanya</div>
+    <a href="#main" class="scroll-arrow">↓</a>
+  </div>
+</section>
+
+<!-- ══ COUNTER ══ -->
+<section class="counter-section" id="main">
+  <div class="counter-eyebrow">Sudah Bersama Selama</div>
+  <div class="counter-grid">
+    <div class="counter-box">
+      <div class="counter-num" id="cDay">0</div>
+      <div class="counter-label">Hari</div>
+    </div>
+    <div class="counter-sep">·</div>
+    <div class="counter-box">
+      <div class="counter-num" id="cHour">0</div>
+      <div class="counter-label">Jam</div>
+    </div>
+    <div class="counter-sep">·</div>
+    <div class="counter-box">
+      <div class="counter-num" id="cMin">0</div>
+      <div class="counter-label">Menit</div>
+    </div>
+    <div class="counter-sep">·</div>
+    <div class="counter-box" style="border-color:rgba(201,75,123,.2);background:rgba(201,75,123,.06)">
+      <div class="counter-num" id="cSec" style="color:var(--rose-lt)">0</div>
+      <div class="counter-label" style="color:rgba(232,120,158,.5)">Detik</div>
+    </div>
+  </div>
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" id="musicIcon"/></svg>
+    <span id="musicLabel">Play Musik</span>
+  </button>
+  <audio id="music" loop><source src="lagu.mp3" type="audio/mpeg"></audio>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section class="gallery-section">
+  <span class="s-label">📸 Kenangan Kita</span>
+  <div class="s-title">Galeri Foto</div>
+  <div class="gallery-grid" id="gallery"></div>
+  <div class="video-row" id="video-row"></div>
+</section>
+
+<!-- ══ TIMELINE ══ -->
+<section class="timeline-section">
+  <div class="timeline-inner">
+    <span class="s-label">💫 Perjalanan Kita</span>
+    <div class="s-title">Timeline Cerita</div>
+    <div class="tl-list">
+
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-tag">🎮 Awal yang Tidak Terduga</div>
+        <p class="tl-text">Siapa sangka sebuah game bisa jadi awal dari segalanya? Di antara ribuan pemain di Roblox, entah kenapa kita bertemu — dan aku nggak mau berpura-pura itu kebetulan biasa. Mungkin memang semesta yang atur pertemuan itu.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-tag">📱 Pindah ke Instagram</div>
+        <p class="tl-text">Dari dunia game, kita pindah ke Instagram — dan di sana semuanya terasa lebih nyata. Pertama kali teleponan, aku nggak nyangka bisa sampai berjam-jam. Waktu terasa terbang kalau ngobrol sama kamu, sampai lupa malam sudah seberapa larut.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-tag">💬 Pindah ke WhatsApp</div>
+        <p class="tl-text">Lama-lama kita pindah ke WhatsApp, dan obrolan kita semakin dalam. Nggak cuma basa-basi — kita mulai berbagi cerita yang lebih personal, lebih jujur, lebih sungguh-sungguh. Aku mulai cerita hal-hal yang jarang aku cerita ke siapa pun, dan kamu selalu dengerin dengan sabar.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-tag">🤝 Saling Percaya</div>
+        <p class="tl-text">Lalu kamu pun mulai cerita ke aku. Tentang perasaanmu, tentang hari-harimu, tentang hal-hal kecil yang bikin kamu senang atau sedih. Dan aku sadar — ini bukan lagi sekadar kenal. Kita sudah saling percaya, saling menguatkan, saling ada. Tanpa disadari, hati kita sudah pelan-pelan terhubung.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-tag">❤️ 26 April 2026 — Resmi Jadian</div>
+        <p class="tl-text">Hari itu aku nggak akan pernah lupa. Saat semua rasa yang selama ini diam-diam tumbuh akhirnya punya nama. Kita resmi — dan dunia terasa jauh lebih indah dari sebelumnya.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-tag">🌹 1 Bulan Bersama</div>
+        <p class="tl-text">Satu bulan berlalu seperti mimpi yang nggak mau berakhir. Cinta ini bukan memudar — justru semakin hangat, semakin nyaman, semakin terasa seperti rumah.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-tag">🎉 2 Bulan — Hari Ini</div>
+        <p class="tl-text">Dua bulan bersama, dan aku masih nggak habis pikir betapa beruntungnya aku punya kamu. Masih banyak cerita yang ingin kita tulis, masih banyak momen yang ingin kita kenang bersama. Dan aku ingin melewati semuanya — hanya sama kamu 💕</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ LETTER ══ -->
+<section class="letter-section">
+  <span class="s-label">💌 Kata Hatiku</span>
+  <div class="s-title" style="text-align:center">Untuk Bbyyy Sayang</div>
+  <div class="letter-wrap">
+    <p class="letter-body">
+      Kalau dipikir-pikir, lucu juga ya. Dari sekian banyak orang di dunia, kita malah ketemu lewat Roblox. Awalnya cuma main game biasa, terus pindah ke Instagram, lanjut ke WhatsApp. Kelihatannya sederhana, tapi kalau diingat lagi, rasanya kayak kita pelan-pelan dipertemukan dengan cara yang nggak pernah kita duga. 🤍<br><br>
+
+      Aku masih ingat waktu pertama kali kita teleponan. Niatnya cuma sebentar, eh malah berjam-jam sampai lupa waktu. Dari situ aku mulai nyaman sama kamu. Cara kamu dengerin ceritaku, cara kamu selalu nyambung diajak ngobrol, hal-hal kecil itu yang bikin aku betah dan selalu nunggu kabar dari kamu.<br><br>
+
+      Aku juga senang karena kamu mau cerita banyak hal ke aku. Tentang harimu, tentang apa yang kamu rasain, bahkan hal-hal yang mungkin nggak semua orang tahu. Buat aku, itu berarti banget. Karena dari situ aku merasa dipercaya, dan aku bersyukur bisa jadi salah satu orang yang kamu pilih untuk berbagi cerita.<br><br>
+
+      Nggak kerasa ya, sekarang sudah dua bulan kita jalan bareng. Memang belum waktu yang lama, tapi selama dua bulan ini ada banyak momen yang bikin aku makin yakin kalau kehadiran kamu itu spesial. Kamu berhasil bikin hari-hariku lebih berwarna, lebih seru, dan jauh lebih bahagia.<br><br>
+
+      Terima kasih ya, Bbyyy. Terima kasih karena selalu ada, selalu sabar menghadapi aku, selalu bikin aku ketawa, dan selalu jadi tempat pulang setelah hari yang melelahkan. Aku senang bisa kenal kamu, senang bisa dekat sama kamu, dan senang karena sampai hari ini kita masih sama-sama.<br><br>
+
+      Semoga ke depannya kita masih punya banyak cerita yang bisa dibuat bareng, banyak tawa yang bisa dibagi, dan banyak kenangan manis yang bisa kita simpan. 🤍<br><br>
+
+      Happy 2nd Month Anniversary, sayang. Aku sayang kamu, lebih dari yang bisa aku ungkapin lewat kata-kata. 🥰💕
+    </p>
+    <div class="letter-sign">— dari pacar bbyyy yang palingggg gantengggg ❤️</div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <span class="footer-heart">Forever & Always</span>
+  Made with ❤️ for <strong style="color:var(--rose-lt);font-weight:500">Bbyyy</strong>
+  &nbsp;·&nbsp; 26 April 2026 &nbsp;·&nbsp; Happy 2 Months Anniversary
+</footer>
+
+<!-- ══ LIGHTBOX ══ -->
+<div class="lightbox" id="lb" onclick="closeLb(event)">
+  <span class="lb-close" onclick="closeLb()">✕</span>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-cap" id="lb-cap"></div>
+</div>
+
+<!-- ══ VIDEO LIGHTBOX ══ -->
+<div class="vlightbox" id="vlb" onclick="closeVlb(event)">
+  <button class="vlb-close" onclick="closeVlb()">✕</button>
+  <video id="vlb-vid" controls playsinline style="max-width:90vw;max-height:88vh;border-radius:12px;box-shadow:0 0 80px rgba(201,75,123,.25)"></video>
+</div>
+
+<script>
+/* ── Gallery ── */
+const photos=[
+  'foto1.jpeg','foto2.jpeg','foto3.jpeg','foto4.jpeg','foto5.jpeg',
+  'foto6.jpeg','foto7.jpeg','foto8.jpeg','foto9.jpeg','foto10.jpeg',
+  'foto11.jpeg','foto12.jpeg','foto13.jpeg','foto14.jpeg','foto15.jpeg',
+  'foto16.jpeg',
+];
+const grid=document.getElementById('gallery');
+photos.forEach(src=>{
+  const el=document.createElement('div');
+  el.className='g-item';
+  el.innerHTML=`<img src="${src}" alt="" loading="lazy">`;
+  el.addEventListener('click',()=>openLb(src,''));
+  grid.appendChild(el);
+});
+
+/* ── Videos ── */
+const videos=['video1.mp4','video2.mp4','video3.mp4','video4.mp4','video5.mp4','video6.mp4','video7.mp4','video8.mp4','video9.mp4','video10.mp4','video11.mp4','video12.mp4'];
+const videoRow=document.getElementById('video-row');
+if(videoRow && videoRow.children.length===0){
+  videos.forEach(v=>{
+    const el=document.createElement('div');
+    el.className='v-item';
+    el.innerHTML=`<video src="${v}" autoplay loop muted playsinline preload="auto" style="width:100%;height:100%;object-fit:cover;display:block"></video>`;
+    el.addEventListener('click',()=>openVlb(v));
+    videoRow.appendChild(el);
+  });
+}
+
+/* ── Lightbox ── */
+function openLb(src,cap){
+  document.getElementById('lb-img').src=src;
+  document.getElementById('lb-cap').textContent=cap;
+  document.getElementById('lb').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeLb(e){
+  if(!e||e.target===document.getElementById('lb')||e.target.classList.contains('lb-close')){
+    document.getElementById('lb').classList.remove('active');
+    document.body.style.overflow='';
+  }
+}
+
+/* ── Video Lightbox ── */
+function openVlb(src){
+  const vid=document.getElementById('vlb-vid');
+  vid.src=src;
+  vid.play();
+  document.getElementById('vlb').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeVlb(e){
+  if(!e||e.target===document.getElementById('vlb')||e.target.classList.contains('vlb-close')){
+    const vid=document.getElementById('vlb-vid');
+    vid.pause();vid.src='';
+    document.getElementById('vlb').classList.remove('active');
+    document.body.style.overflow='';
+  }
+}
+
+/* ── Counter with SECONDS ── */
+const start=new Date('2026-04-26T00:00:00');
+function updateCounter(){
+  const diff=Date.now()-start;
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor((diff%86400000)/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  const s=Math.floor((diff%60000)/1000);
+  document.getElementById('cDay').textContent=d;
+  document.getElementById('cHour').textContent=String(h).padStart(2,'0');
+  document.getElementById('cMin').textContent=String(m).padStart(2,'0');
+  document.getElementById('cSec').textContent=String(s).padStart(2,'0');
+}
+setInterval(updateCounter,1000);
+updateCounter();
+
+/* ── Music ── */
+let playing=false;
+const music=document.getElementById('music');
+function toggleMusic(){
+  if(playing){
+    music.pause();playing=false;
+    document.getElementById('musicLabel').textContent='Play Musik';
+    document.getElementById('musicIcon').setAttribute('d','M8 5v14l11-7z');
+  }else{
+    music.play();playing=true;
+    document.getElementById('musicLabel').textContent='Pause Musik';
+    document.getElementById('musicIcon').setAttribute('d','M6 19h4V5H6v14zm8-14v14h4V5h-4z');
+  }
+}
+
+/* ── Timeline scroll reveal ── */
+const tlItems=document.querySelectorAll('.tl-item');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add('visible');
+  });
+},{threshold:.15});
+tlItems.forEach(el=>obs.observe(el));
+
+/* ── Floating petals ── */
+const petalEmojis=['❤️','🌸','💕','✨','💖','🌷','💗','🫧'];
+const wrap=document.getElementById('petals');
+function spawnPetal(){
+  const p=document.createElement('div');
+  p.className='petal';
+  p.textContent=petalEmojis[Math.floor(Math.random()*petalEmojis.length)];
+  p.style.cssText=`left:${Math.random()*100}vw;font-size:${.7+Math.random()*.7}rem;animation-duration:${7+Math.random()*9}s;animation-delay:${Math.random()*2}s`;
+  wrap.appendChild(p);
+  const dur=(parseFloat(p.style.animationDuration)+2)*1000;
+  setTimeout(()=>p.remove(),dur);
+}
+for(let i=0;i<10;i++)setTimeout(spawnPetal,i*400);
+setInterval(spawnPetal,1000);
+
+/* ── Cursor trail ── */
+const canvas=document.getElementById('trail-canvas');
+const ctx=canvas.getContext('2d');
+let sparks=[];
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+resize();window.addEventListener('resize',resize);
+
+function addSparks(x,y){
+  const count=window.matchMedia('(hover:none)').matches?3:5;
+  for(let i=0;i<count;i++){
+    const angle=Math.random()*Math.PI*2;
+    const speed=.8+Math.random()*2;
+    sparks.push({
+      x,y,
+      vx:Math.cos(angle)*speed,
+      vy:Math.sin(angle)*speed-1,
+      life:1,
+      r:1.5+Math.random()*2,
+      hue:330+Math.random()*40
+    });
+  }
+}
+document.addEventListener('mousemove',e=>{if(Math.random()>.55)addSparks(e.clientX,e.clientY)});
+document.addEventListener('touchmove',e=>{const t=e.touches[0];if(Math.random()>.3)addSparks(t.clientX,t.clientY)},{passive:true});
+
+function animSparks(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  sparks=sparks.filter(s=>s.life>0);
+  sparks.forEach(s=>{
+    ctx.save();
+    ctx.globalAlpha=s.life*.85;
+    ctx.fillStyle=`hsl(${s.hue},85%,72%)`;
+    ctx.shadowColor=`hsl(${s.hue},85%,72%)`;
+    ctx.shadowBlur=8;
+    ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
+    ctx.restore();
+    s.x+=s.vx;s.y+=s.vy;s.vy+=.06;s.life-=.022;s.r*=.97;
+  });
+  requestAnimationFrame(animSparks);
+}
+animSparks();
+</script>
+</body>
+</html>
